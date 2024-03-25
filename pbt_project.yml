@@ -1,0 +1,45 @@
+name: prophecy-macros-sql
+description: ''
+version: '0.0.1'
+author: support@prophecy.io
+language: python
+buildSystem: ''
+buildSystemDetails:
+  artefactID: 'macro-sql'
+  parentArtefactID: 'prophecy'
+  buildSystem: wheel
+  author: null
+  createdAt: '2023-08-10 17:42:47'
+pipelines: { }
+datasets: { }
+templates: { }
+jobs: { }
+gemContainer:
+  languageVersion: ''
+  gemLibsVersion: ''
+  gems:
+    gems/deduplicate:
+      name: deduplicate
+      category: Macro
+      subCategory: Wrapper
+      description: null
+      author: support@prophecy.io
+      mode: batch
+      files: [ ]
+      createdAt: '2023-07-13 12:46:28'
+functions:
+  author: null
+  createdAt: '2023-08-10 17:42:47'
+  udfs: { }
+  udafs: { }
+  expressions: { }
+subgraphs: { }
+sqlModels: { }
+sqlMacros: { }
+sqlSeeds: { }
+sqlSources: { }
+sqlUnreferencedSources: { }
+sqlPipeline: null
+dependencies: '[]'
+projectDependencies: { }
+pipelineConfigurations: { }
