@@ -1,10 +1,16 @@
-from prophecy.cb.sql import MacroBuilderBase
-from prophecy.cb.ui.uispec import Dialog, ColumnsLayout, Ports, MacroInstance
+from dataclasses import dataclass
+
+from prophecy.cb.sql.MacroBuilderBase import *
+from prophecy.cb.ui.uispec import *
 
 
-class Deduplicate(MacroBuilderBase):
+class Deduplicate(MacroSpec):
     name: str = "Deduplicate"
     project: str = "https://github.com/dbt-labs/dbt-utils"
+
+    @dataclass
+    class DeduplicateProperties(MacroProperties):
+        parameters: list[MacroParameter]
 
     def dialog(self) -> Dialog:
         return Dialog("Macro") \
@@ -17,8 +23,8 @@ class Deduplicate(MacroBuilderBase):
             .addColumn(
                 MacroInstance(
                     "Macro Parameters",
-                    name="Deduplicate",
-                    projectName="dbt-utils"
+                    name=self.name,
+                    projectName=self.project.split('/')[-1]
                 ).bindProperty("parameters").withSchemaSuggestions(),
                 "5fr"
             )
