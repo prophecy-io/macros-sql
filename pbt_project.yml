@@ -5,7 +5,7 @@ author: support@prophecy.io
 language: python
 buildSystem: ''
 buildSystemDetails:
-  artefactID: 'macro-sql'
+  artefactID: 'macros-sql'
   parentArtefactID: 'prophecy'
   buildSystem: wheel
   author: null
