@@ -10,36 +10,14 @@ buildSystemDetails:
   buildSystem: wheel
   author: null
   createdAt: '2023-08-10 17:42:47'
-pipelines: { }
-datasets: { }
-templates: { }
-jobs: { }
 gemContainer:
-  languageVersion: ''
-  gemLibsVersion: ''
+  languageVersion: '3.10'
+  gemLibsVersion: '1.5.10.dev0'
   gems:
     gems/deduplicate:
       name: deduplicate
       category: Macro
-      subCategory: Wrapper
       description: null
       author: support@prophecy.io
-      mode: batch
       files: [ ]
       createdAt: '2023-07-13 12:46:28'
-functions:
-  author: null
-  createdAt: '2023-08-10 17:42:47'
-  udfs: { }
-  udafs: { }
-  expressions: { }
-subgraphs: { }
-sqlModels: { }
-sqlMacros: { }
-sqlSeeds: { }
-sqlSources: { }
-sqlUnreferencedSources: { }
-sqlPipeline: null
-dependencies: '[]'
-projectDependencies: { }
-pipelineConfigurations: { }
