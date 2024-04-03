@@ -10,6 +10,8 @@ class Deduplicate(MacroSpec):
 
     @dataclass
     class DeduplicateProperties(MacroProperties):
+        macroName: str
+        projectName: str
         parameters: list[MacroParameter]
 
     def dialog(self) -> Dialog:
