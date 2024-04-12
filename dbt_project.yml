@@ -1,3 +1,6 @@
+# ==================
+# Project Details
+# ==================
 name: "macros-sql"
 config-version: 2
 require-dbt-version:
@@ -5,5 +8,12 @@ require-dbt-version:
 - "<2.0.0"
 version: "0.0.1"
 profile: "prophecy-default"
+
+# ==================
+# File Path Configs
+# ==================
+model-paths:
+- "models"
+- "prophecy-sources"
 macro-paths:
 - "macros"

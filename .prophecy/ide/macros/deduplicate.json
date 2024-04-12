@@ -1,0 +1,56 @@
+{
+  "deduplicate" : {
+    "name" : "deduplicate",
+    "macroType" : "query",
+    "definition" : "\n\n    with row_numbered as (\n        select\n            _inner.*,\n            row_number() over (\n                partition by {{ partition_by }}\n                order by {{ order_by }}\n            ) as rn\n        from {{ relation }} as _inner\n    )\n    select\n            distinct data.*\n    from {{ relation }} as data\n    natural join row_numbered\n    where row_numbered.rn = 1",
+    "parameters" : {
+      "type" : "record",
+      "fields" : [ {
+        "name" : "relation",
+        "kind" : {
+          "type" : "value"
+        },
+        "optional" : false,
+        "isWorkflowNodeConfiguration" : false,
+        "isReferenced" : false
+      }, {
+        "name" : "partition_by",
+        "kind" : {
+          "type" : "value"
+        },
+        "optional" : false,
+        "isWorkflowNodeConfiguration" : false,
+        "isReferenced" : false
+      }, {
+        "name" : "order_by",
+        "kind" : {
+          "type" : "value"
+        },
+        "optional" : false,
+        "isWorkflowNodeConfiguration" : false,
+        "isReferenced" : false
+      } ]
+    },
+    "staleState" : "none",
+    "version" : 0
+  },
+  "deduplicate_simple" : {
+    "name" : "deduplicate_simple",
+    "macroType" : "query",
+    "definition" : "\n    select\n        distinct * from {{relation}}",
+    "parameters" : {
+      "type" : "record",
+      "fields" : [ {
+        "name" : "relation",
+        "kind" : {
+          "type" : "value"
+        },
+        "optional" : false,
+        "isWorkflowNodeConfiguration" : false,
+        "isReferenced" : false
+      } ]
+    },
+    "staleState" : "none",
+    "version" : 0
+  }
+}

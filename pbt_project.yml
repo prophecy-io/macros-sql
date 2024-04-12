@@ -1,23 +1,57 @@
-name: prophecy-macros-sql
+name: macros_sql
 description: ''
-version: '0.0.1'
-author: support@prophecy.io
-language: python
+version: 0.0.1
+author: null
+language: sql
 buildSystem: ''
-buildSystemDetails:
-  artefactID: 'macros-sql'
-  parentArtefactID: 'prophecy'
-  buildSystem: wheel
-  author: null
-  createdAt: '2023-08-10 17:42:47'
+buildSystemDetails: null
+pipelines: {}
+datasets: {}
+templates: {}
+jobs: {}
 gemContainer:
-  languageVersion: '3.10'
-  gemLibsVersion: '1.5.10.dev0'
-  gems:
-    gems/deduplicate:
-      name: deduplicate
-      category: Macro
-      description: null
-      author: support@prophecy.io
-      files: [ ]
-      createdAt: '2023-07-13 12:46:28'
+  languageVersion: ''
+  gemLibsVersion: ''
+  gems: {}
+  dependencies: null
+functions:
+  author: null
+  createdAt: '2024-04-12 10:31:20'
+  udfs: {}
+  udafs: {}
+  expressions: {}
+  airflowFunctions: {}
+subgraphs: {}
+sqlModels: {}
+sqlSnapshots: {}
+sqlMacros:
+  .prophecy/metadata/sqlmacros/deduplicate:
+    name: deduplicate
+    macroType: query
+    description: null
+    author: rohitjain@prophecy.io
+    files:
+    - macros/deduplicate.sql
+    - .prophecy/ide/macros/deduplicate.json
+    createdAt: '2024-04-12 10:31:21'
+  .prophecy/metadata/sqlmacros/deduplicate_simple:
+    name: deduplicate_simple
+    macroType: query
+    description: null
+    author: rohitjain@prophecy.io
+    files:
+    - macros/deduplicate.sql
+    createdAt: '2024-04-12 10:31:21'
+sqlSeeds: {}
+sqlSources: {}
+sqlUnreferencedSources: {}
+sqlPipeline:
+  name: sqlPipeline
+  description: null
+  author: rohitjain@prophecy.io
+  createdAt: '2024-04-12 10:31:20'
+dependencies: []
+projectDependencies: {}
+flags:
+  shouldAddDefaultDependenciesIfAbsent: true
+pipelineConfigurations: {}
