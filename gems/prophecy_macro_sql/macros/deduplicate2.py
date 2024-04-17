@@ -4,12 +4,12 @@ from prophecy.cb.sql.MacroBuilderBase import *
 from prophecy.cb.ui.uispec import *
 
 
-class Deduplicate(MacroSpec):
-    name: str = "Deduplicate"
+class Deduplicate2(MacroSpec):
+    name: str = "Deduplicate2"
 
-    @dataclass
+    @dataclass(frozen=True)
     class DeduplicateProperties(MacroProperties):
-        parameters: list[MacroParameter]
+        parameters: list[MacroParameter] = field(default_factory=list)
 
     def dialog(self) -> Dialog:
         return Dialog("Macro") \

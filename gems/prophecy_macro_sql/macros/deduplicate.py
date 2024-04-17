@@ -8,11 +8,11 @@ class Deduplicate(MacroSpec):
     name: str = "Deduplicate"
     project: str = "https://github.com/dbt-labs/dbt-utils"
 
-    @dataclass
+    @dataclass(frozen=True)
     class DeduplicateProperties(MacroProperties):
-        macroName: str
-        projectName: str
-        parameters: list[MacroParameter]
+        macroName: str = ''
+        projectName: str = ''
+        parameters: list[MacroParameter] = field(default_factory=list)
 
     def dialog(self) -> Dialog:
         return Dialog("Macro") \
