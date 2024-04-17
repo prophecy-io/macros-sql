@@ -9,6 +9,8 @@ class Deduplicate2(MacroSpec):
 
     @dataclass(frozen=True)
     class DeduplicateProperties(MacroProperties):
+        macroName: str = ''
+        projectName: str = ''
         parameters: list[MacroParameter] = field(default_factory=list)
 
     def dialog(self) -> Dialog:
