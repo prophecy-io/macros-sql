@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from collections import defaultdict
 from prophecy.cb.sql.MacroBuilderBase import *
 from prophecy.cb.ui.uispec import *
 
@@ -11,6 +12,9 @@ class Deduplicate2(MacroSpec):
     class DeduplicateProperties(MacroProperties):
         macroName: str = ''
         projectName: str = ''
+        tableName: str = ''
+        partitionBy: str = ''
+        orderBy: str = ''
         parameters: list[MacroParameter] = field(default_factory=list)
 
     def dialog(self) -> Dialog:
@@ -22,12 +26,22 @@ class Deduplicate2(MacroSpec):
                 "content"
             )
             .addColumn(
-                MacroInstance(
-                    "Macro Parameters",
-                    name=self.name,
-                    projectName=self.project.split('/')[-1]
-                ).bindProperty("parameters").withSchemaSuggestions(),
-                "5fr"
+                StackLayout()
+                .addElement(
+                    TextBox("Table Name")
+                    .bindPlaceholder("Configure table name")
+                    .bindProperty("tableName")
+                )
+                .addElement(
+                    TextBox("Deduplicate Columns")
+                    .bindPlaceholder("Select a column to deduplicate on")
+                    .bindProperty("partitionBy")
+                )
+                .addElement(
+                    TextBox("Rows to keep logic")
+                    .bindPlaceholder("Select row on the basis of ordering a particular column")
+                    .bindProperty("partitionBy")
+                )
             )
         )
 
@@ -107,3 +121,13 @@ class Deduplicate2(MacroSpec):
         else:
             resolved_macro_name = macro_name
         return f'{{{{ {resolved_macro_name}({arguments}) }}}}'
+
+    def loadProperties(self, parameters: List[MacroParameter]) -> PropertiesType:
+        parametersMap = self.convertToParameterMap(parameters)
+        return Deduplicate2.DeduplicateProperties(
+            macroName=self.name,
+            projectName='',
+            tableName=parametersMap.get('relation'),
+            orderBy=parametersMap.get('partition_by'),
+            partitionBy=parametersMap.get('order_by')
+        )
