@@ -6,7 +6,7 @@ from prophecy.cb.ui.uispec import *
 
 class Deduplicate(MacroSpec):
     name: str = "Deduplicate"
-    project: str = "https://github.com/dbt-labs/dbt-utils"
+    project: str = "dbt-utils"
 
     @dataclass(frozen=True)
     class DeduplicateProperties(MacroProperties):
